@@ -1,22 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style_criar.css">
-    
-    <title>Niver</title>
+    <link rel="stylesheet" href="./css/style_criar.css">
+    <title>Carrossel Simples</title>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
+
 <body>
-   <div class="carrossel-container">
-        <div class="carrossel">
-            
-            <div class="item"><img  src="./images/justin1.jpg" alt=""></div> 
-            <div class="item"><img  src="./images/justin2.jpg" alt=""></div> 
-            <div class="item"><img  src="./images/justin3.jpg" alt=""></div> 
-       
-        </div>
+    <div class="carousel-container">
+        <div class="carousel-images"></div>
     </div>
+    <h1 class="titulo">Feliz aniversário!</h1>
+    <div class="mensagem">
+        <span>Hoje é o dia em que o universo ficou mais brilhante porque você nasceu! 🌟
+            Que seu bolo seja doce, suas velas fáceis de apagar e seus desejos todos realizados! 🎁
+            Aproveite cada segundo, dance como se ninguém estivesse olhando e ria até a barriga doer! 🕺💃
+            Você é incrível, e hoje o mundo te celebra do jeitinho que merece! 🌈
+            Que o próximo ano seja recheado de aventuras, surpresas e muitas alegrias! 🎈
+            E, claro, que nunca falte pizza, brigadeiro e sorrisos! 🍕😄
+            Parabéns! Que venham mais e mais momentos inesquecíveis! 🎊
+        </span>
+    </div>
+
+    <div id="player"></div> <!-- O player será visível -->
+    
+    <!-- Botão para tocar o vídeo -->
+    <button id="play-btn">Tocar Música</button>
+
+    <script>
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: 'xkK8nPnriK4', // Substitua pelo ID do vídeo desejado
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Adiciona evento ao botão para tocar a música
+            const playButton = document.getElementById('play-btn');
+            playButton.addEventListener('click', function() {
+                player.playVideo();
+            });
+        }
+
+        // Exponha a função para o YouTube
+        window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+    </script>
+
     <script src="./js/script-criar.js"></script>
 </body>
+
 </html>
